@@ -11,7 +11,7 @@
       slot="suffix"
       class="el-icon-search el-input__icon"
     />
-    <template slot-scope="{ item }">
+    <template slot-scope="{item}">
       <div class="name">
         {{ item.name }}
       </div>
@@ -30,6 +30,10 @@ export default {
       groups: []
     }
   },
+  async mounted() {
+    this.groups = await getArray()
+    console.log(this.groups)
+  },
   methods: {
     querySearch(queryString, cb) {
       let groups = this.groups;
@@ -46,10 +50,6 @@ export default {
       this.target = item.name
       window.eventBus.$emit("selectTarget", item.name)
     }
-  },
-  async mounted() {
-    this.groups = await getArray()
-    console.log(this.groups)
   }
 }
 </script>
@@ -57,26 +57,26 @@ export default {
 
 <style scope lang="scss">
 .my-autocomplete {
-  background: var(--basic-background);
-  border: 1px solid var(--base-border);
+  background: $basic-background;
+  border: 1px solid $base-border;
   li {
-    border-bottom: 1px solid var(--base-border);
+    border-bottom: 1px solid $base-border;
   }
   
   li:hover {
-    background: #192734;
+    background: $hover-dark;
     opacity: 0.7;
   }
 }
 
 input[type=text] {
-  background: #253341;
+  background: $input-dark;
   border: none;
   color: white;
 }
 
 input[type=text]:focus {
-  border: 1px solid var(--primary);
+  border: 1px solid $primary;
 }
 
 .el-autocomplete-suggestion {

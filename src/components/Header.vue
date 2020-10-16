@@ -15,10 +15,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .header {
-  background: var(--basic-background);
-  border-bottom: 1px solid var(--base-border);
+  background: $basic-background;
+  border-bottom: 1px solid $base-border;
   display: flex;
   justify-content: center;
   align-items: center;

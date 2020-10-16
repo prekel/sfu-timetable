@@ -5,7 +5,7 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
-window.eventBus = new Vue();
+window.eventBus = new Vue()
 
 new Vue({
   render: h => h(App),
