@@ -20,12 +20,6 @@ export default {
 </script>
 
 <style lang="scss">
-:root {
-  // $basic-background: #15202b;
-  // $base-border: #38444d;
-  // $primary: #17bf63;
-  // $text-dark: #8899a6;
-}
 
 *, *::before, *::after { box-sizing: border-box; }
 
