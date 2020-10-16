@@ -44,7 +44,7 @@ export default {
     },
     handleSelect(item) {
       this.target = item.name
-      window.eventBus.$emit("selectTarget", item.name)
+      window.eventBus.$emit("select-target", item.name)
     }
   },
   async mounted() {
