@@ -25,6 +25,6 @@ export default {
 }
 
 .input {
-  width: 900px;
+  width: 600px;
 }
 </style>

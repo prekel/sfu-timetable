@@ -46,8 +46,13 @@ export default {
     margin: 20px 0;
     color: $text-dark;
     display: flex;
-    .time, .place {
+    .time, .place  {
       margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+    .teacher {
+      width: 30%;
     }
   }
 }

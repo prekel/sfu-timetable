@@ -32,7 +32,6 @@ export default {
   },
   async mounted() {
     this.groups = await getArray()
-    console.log(this.groups)
   },
   methods: {
     querySearch(queryString, cb) {

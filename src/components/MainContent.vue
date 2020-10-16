@@ -37,12 +37,7 @@ export default {
   },
   data() {
     return {
-      target: { target: "" },
-      type: "Практика",
-      subject: "Язык программирования C#",
-      time: "10:15-11:50",
-      teacher: "Чикизов А.А.",
-      place: "УЛК 221",
+      target: {},
       isSelected: false,
       currentDate: null,
     }
@@ -55,22 +50,25 @@ export default {
       return getWeekDay(this.currentDate.getDay())
     },
     week() {
-      if (getWeekNum(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear()) == 1 ) {
-        return {"week": getWeekNum(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear()),
-         "word": "Нечётная"}
+      let weekObj = {week: getWeekNum(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear())}
+      if (weekObj.week == 1 ) {
+        weekObj.word = "Нечётная"
+        return weekObj
       } else {
-        return {"week": getWeekNum(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear()),
-         "word": "Чётная"}
+        weekObj.word = "Чётная"
+        return weekObj
       }
     },
     subjects() {
-      return getTodaySubjects(this.target.timetable, this.currentDate.getDay(), getWeekNum(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear()))
+      return getTodaySubjects(this.target.timetable, this.currentDate.getDay(), 
+        getWeekNum(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear()))
     }
   },
   mounted() {
     window.eventBus.$on("selectTarget", async (target) => {
       this.target = await getTarget(target)
-      this.isSelected = true} )
+      this.isSelected = true
+      })
     this.currentDate = new Date();
   }
 }
