@@ -44,12 +44,10 @@ body {
 
 @media screen and (max-width: 830px)  {
   .main {
-    width: 100%;
+    width: calc(100% - 16px);
     margin: 16px auto;
   }
-  .main-content {
-    border-left: none;
-    border-right: none;
+  .day-content {
   }
 
 }

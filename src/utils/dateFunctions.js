@@ -26,8 +26,37 @@ export function getMonth(month) {
   return months[month]
 }
 
-export function getTodaySubjects(timetable, day, week) {
+export function getTodaySubjects(timetable, day) {
   return timetable.filter(item => {
-    return (item.day == day && item.week == week)
+    return (item.day == day)
   })
+}
+
+export function addDays(date, days) {
+  let result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result
+}
+
+export function getStartWeek(date, days) {
+  if (days == 0) days = 7
+  let result = new Date(date);
+  result.setDate(result.getDate() - days);
+  return result
+}
+
+export function getWeekSubjects(array, week) {
+  return array.filter(item => {
+    return (item.week == week)
+  })
+}
+
+export function getSubjects(array) {
+  let newArr = []
+  for (let i = 1; i <= 6; i++) {
+    newArr.push(array.filter(item => {
+      if (item.day == i) return item
+    }))
+  }
+  return newArr
 }

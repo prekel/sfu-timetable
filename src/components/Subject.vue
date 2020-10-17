@@ -34,6 +34,7 @@ export default {
     margin-bottom: 20px;
     .subject {
       margin: 0;
+      color: $primary;
     }
     .type {
       margin-left: auto;
