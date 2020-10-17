@@ -1,6 +1,9 @@
 import {days, months} from "./constants"
 
-export function getWeekNum(day, month, year) {
+export function getWeekNum(date) {
+  let day = date.getDate()
+  let month = date.getMonth()
+  let year = date.getFullYear()
   month++;
   let a = Math.floor((14 - month) / 12)
   let y = year + 4800 - a

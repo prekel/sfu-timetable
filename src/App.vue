@@ -34,11 +34,23 @@ body {
 }
 
 .main {
-  width: 600px;
+  width: 850px;
   margin: 16px auto;
 }
 
 #app {
   min-height: 100%;
+}
+
+@media screen and (max-width: 830px)  {
+  .main {
+    width: 100%;
+    margin: 16px auto;
+  }
+  .main-content {
+    border-left: none;
+    border-right: none;
+  }
+
 }
 </style>

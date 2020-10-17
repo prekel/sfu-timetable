@@ -22,6 +22,12 @@
       :type="sub.type"
       :place="sub.place"
     />
+    <div
+      v-if="subjects.length == 0"
+      class="no-lessons"
+    >
+      Сегодня занятий нет
+    </div>
   </el-main>
 </template>
 
@@ -50,7 +56,7 @@ export default {
       return getWeekDay(this.currentDate.getDay())
     },
     week() {
-      let weekObj = {week: getWeekNum(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear())}
+      let weekObj = {week: getWeekNum(this.currentDate)}
       if (weekObj.week == 1 ) {
         weekObj.word = "Нечётная"
         return weekObj
@@ -61,7 +67,7 @@ export default {
     },
     subjects() {
       return getTodaySubjects(this.target.timetable, this.currentDate.getDay(), 
-        getWeekNum(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear()))
+        getWeekNum(this.currentDate))
     }
   },
   mounted() {
@@ -93,6 +99,12 @@ export default {
       font-weight:lighter;
       color: $text-dark;
     }
-  } 
+  }
+  .no-lessons {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 20px 0;
+  }
 }
 </style>
