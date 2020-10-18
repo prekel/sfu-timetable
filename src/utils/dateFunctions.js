@@ -26,11 +26,6 @@ export function getMonth(month) {
   return months[month]
 }
 
-export function getTodaySubjects(timetable, day) {
-  return timetable.filter(item => {
-    return (item.day == day)
-  })
-}
 
 export function addDays(date, days) {
   let result = new Date(date);
