@@ -25,6 +25,15 @@ export default {
 }
 
 .input {
-  width: 600px;
+  width: 850px;
+}
+
+@media screen and (max-width: 830px) {
+  .input {
+    width: 100%;
+  }
+  .header {
+    padding: 8px;
+  }
 }
 </style>

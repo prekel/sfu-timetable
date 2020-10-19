@@ -4,36 +4,25 @@
     v-if="isSelected"
     class="main-content"
   >
-    <div class="subject-heading">
-      <div> {{ currentDate.getDate() }} {{ month }} </div>
-      <div class="week">
-        {{ week.word }}
-      </div>
-      <div class="day">
-        {{ day }}
-      </div>
-    </div>
-    <subject
-      v-for="(sub, ind) in subjects"
-      :key="ind"
-      :subject="sub.subject"
-      :teacher="sub.teacher"
-      :time="sub.time"
-      :type="sub.type"
-      :place="sub.place"
+    <day
+      v-for="i in 6"
+      :key="i"
+      :date="calcDate(i)"
+      :subjects="weekSubjects[i - 1]"
+      class="day"
     />
   </el-main>
 </template>
 
 <script>
 import { getTarget } from "@/api/api.js"
-import { getWeekDay, getMonth, getWeekNum, getTodaySubjects } from "@/utils/dateFunctions.js"
-import Subject from './Subject.vue'
+import { getWeekNum, addDays, getStartWeek, getWeekSubjects, getSubjects } from "@/utils/dateFunctions.js"
+import Day from './Day.vue'
 
 export default {
   name: "MainContent",
   components: {
-    "subject": Subject
+    "day": Day
   },
   data() {
     return {
@@ -43,25 +32,14 @@ export default {
     }
   },
   computed: {
-    month() {
-      return getMonth(this.currentDate.getMonth())
-    },
-    day() {
-      return getWeekDay(this.currentDate.getDay())
-    },
-    week() {
-      let weekObj = {week: getWeekNum(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear())}
-      if (weekObj.week == 1 ) {
-        weekObj.word = "Нечётная"
-        return weekObj
-      } else {
-        weekObj.word = "Чётная"
-        return weekObj
-      }
-    },
     subjects() {
-      return getTodaySubjects(this.target.timetable, this.currentDate.getDay(), 
-        getWeekNum(this.currentDate.getDate(), this.currentDate.getMonth(), this.currentDate.getFullYear()))
+      return getWeekSubjects(this.target.timetable, getWeekNum(this.currentDate))
+    },
+    weekStart() {
+      return getStartWeek(this.currentDate, this.currentDate.getDay())
+    },
+    weekSubjects() {
+      return getSubjects(this.subjects)
     }
   },
   mounted() {
@@ -70,29 +48,21 @@ export default {
       this.isSelected = true
       })
     this.currentDate = new Date();
+  },
+  methods: {
+    calcDate(indx) {
+      return addDays(this.weekStart, indx);
+    }
   }
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .main-content {
-  border-radius: 4px;
-  border: 1px solid $base-border;
-  padding: 0 20px;
-  .subject-heading {
-    display: flex;
-    border-bottom: 1px solid $base-border;
-    padding: 20px 0;
-    font-size: 22px;
-    font-weight: bold;
-    .day {
-      margin-left: auto;
-    }
-    .week {
-      font-size: 14px;
-      font-weight:lighter;
-      color: $text-dark;
-    }
-  } 
+  padding: 0;
+}
+
+.day {
+  margin-bottom: 20px;
 }
 </style>

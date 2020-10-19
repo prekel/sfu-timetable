@@ -5,6 +5,7 @@
     :fetch-suggestions="querySearch"
     :trigger-on-focus="false"
     placeholder="Введите группу или фамилию преподавателя"
+    clearable
     @select="handleSelect"
   >
     <i
@@ -61,6 +62,9 @@ export default {
   li {
     border-bottom: 1px solid $base-border;
   }
+  li:nth-last-child(1) {
+    border-bottom: none;
+  }
   
   li:hover {
     background: $hover-dark;
@@ -85,7 +89,7 @@ input[type=text]:focus {
 }
 
 .el-popper {
-  margin-top: 16px !important;
+  margin-top: 20px !important;
 }
 
 .name, 

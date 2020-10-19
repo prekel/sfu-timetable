@@ -20,12 +20,6 @@ export default {
 </script>
 
 <style lang="scss">
-:root {
-  // $basic-background: #15202b;
-  // $base-border: #38444d;
-  // $primary: #17bf63;
-  // $text-dark: #8899a6;
-}
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -40,11 +34,21 @@ body {
 }
 
 .main {
-  width: 600px;
+  width: 850px;
   margin: 16px auto;
 }
 
 #app {
   min-height: 100%;
+}
+
+@media screen and (max-width: 830px)  {
+  .main {
+    width: calc(100% - 16px);
+    margin: 16px auto;
+  }
+  .day-content {
+  }
+
 }
 </style>
