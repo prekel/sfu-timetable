@@ -2,9 +2,6 @@
   <div class="day-content">
     <div class="subject-heading">
       <div> {{ date.getDate() }} {{ month }} </div>
-      <div class="week">
-        {{ week.word }}
-      </div>
       <div class="day">
         {{ day }}
       </div>
@@ -29,7 +26,7 @@
 
 <script>
 import Subject from './Subject.vue'
-import { getWeekDay, getMonth, getWeekNum } from "@/utils/dateFunctions.js"
+import { getWeekDay, getMonth } from "@/utils/dateFunctions.js"
 export default {
    components: {
     "subject": Subject
@@ -41,16 +38,6 @@ export default {
     },
     day() {
       return getWeekDay(this.date.getDay())
-    },
-    week() {
-      let weekObj = {week: getWeekNum(this.date)}
-      if (weekObj.week == 1 ) {
-        weekObj.word = "Нечётная"
-        return weekObj
-      } else {
-        weekObj.word = "Чётная"
-        return weekObj
-      }
     }
   }
 }
@@ -69,11 +56,6 @@ export default {
     font-weight: bold;
     .day {
       margin-left: auto;
-    }
-    .week {
-      font-size: 14px;
-      font-weight:lighter;
-      color: $text-dark;
     }
   }
   .no-lessons {
