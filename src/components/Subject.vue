@@ -57,6 +57,9 @@ export default {
     display: flex;
     align-items: center;
   }
+  .place {
+    width: 15%;
+  }
 }
 
 .subject-container:nth-last-child(1) {

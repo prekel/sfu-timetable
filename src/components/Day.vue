@@ -46,8 +46,9 @@ export default {
 <style scoped lang="scss">
 .day-content {
   border-radius: 4px;
-  border: 1px solid $base-border;
   padding: 0 20px;
+  padding-bottom: 1px;
+  background: $input-dark;
   .subject-heading {
     display: flex;
     border-bottom: 1px solid $base-border;
