@@ -18,8 +18,8 @@ export default {
 <style scoped lang="scss">
 .header {
   background: $basic-background;
-  border-bottom: 1px solid $base-border;
   display: flex;
+  padding-top: 16px;
   justify-content: center;
   align-items: center;
 }
