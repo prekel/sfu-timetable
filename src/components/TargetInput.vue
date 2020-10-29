@@ -8,10 +8,6 @@
     clearable
     @select="handleSelect"
   >
-    <i
-      slot="suffix"
-      class="el-icon-search el-input__icon"
-    />
     <template slot-scope="{item}">
       <div class="name">
         {{ item.name }}

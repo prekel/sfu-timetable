@@ -104,10 +104,18 @@ export default {
   width: 100%;
 }
 
+.el-tabs__header {
+  margin-bottom: 16px;
+}
+
 .el-tabs__item {
   color: white;
   width: 50%;
   text-align: center;
+}
+
+.el-tabs__item:hover {
+  color: $primary
 }
 
 .el-tabs__nav-wrap::after {
