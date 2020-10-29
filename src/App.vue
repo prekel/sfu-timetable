@@ -35,7 +35,7 @@ body {
 
 .main {
   width: 850px;
-  margin: 16px auto;
+  margin: 6px auto;
 }
 
 #app {
@@ -47,8 +47,5 @@ body {
     width: calc(100% - 16px);
     margin: 16px auto;
   }
-  .day-content {
-  }
-
 }
 </style>
