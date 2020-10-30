@@ -29,6 +29,11 @@ export default {
   },
   async mounted() {
     this.groups = await getArray()
+      if (localStorage.target) {
+      console.log("test")
+      this.target = localStorage.target
+      this.loadData()
+    }
   },
   methods: {
     querySearch(queryString, cb) {
@@ -44,7 +49,12 @@ export default {
     },
     handleSelect(item) {
       this.target = item.name
+      localStorage.target = this.target
+      console.log(localStorage.target)
       window.eventBus.$emit("selectTarget", item.name)
+    },
+    loadData() {
+      window.eventBus.$emit("selectTarget", localStorage.target)
     }
   }
 }
