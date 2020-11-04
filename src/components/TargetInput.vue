@@ -28,9 +28,13 @@ export default {
     }
   },
   async mounted() {
-    this.groups = await getArray()
-      if (localStorage.target) {
-      console.log("test")
+    if (localStorage.groups) {
+      this.groups = await JSON.parse(localStorage.groups)
+    } else {
+      this.groups = await getArray()
+      localStorage.groups = await JSON.stringify(this.groups)
+    }
+    if (localStorage.target) {
       this.target = localStorage.target
       this.loadData()
     }
@@ -50,7 +54,6 @@ export default {
     handleSelect(item) {
       this.target = item.name
       localStorage.target = this.target
-      console.log(localStorage.target)
       window.eventBus.$emit("selectTarget", item.name)
     },
     loadData() {
