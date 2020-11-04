@@ -1,4 +1,4 @@
-import {days, months} from "./constants"
+ import {days, months} from "./constants"
 
 export function getWeekNum(date) {
   let day = date.getDate()
