@@ -34,10 +34,10 @@
 <script>
 import { getTarget } from "@/api/api.js"
 import { getWeekNum, addDays, getStartWeek, getWeekSubjects, getSubjects } from "@/utils/dateFunctions.js"
-import Day from './Day.vue'
+import Day from "./Day.vue"
 
 export default {
-  name: "MainContent",
+  name: "Week",
   components: {
     "day": Day
   },

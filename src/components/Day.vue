@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import Subject from './Subject.vue'
+import Subject from "./Subject.vue"
 import { getWeekDay, getMonth } from "@/utils/dateFunctions.js"
 export default {
    components: {
