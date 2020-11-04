@@ -1,4 +1,3 @@
-/* eslint-disable vue/require-prop-types */
 <template>
   <div class="subject-container">
     <div class="heading container">

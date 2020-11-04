@@ -28,15 +28,21 @@ export default {
     }
   },
   async mounted() {
+    if (this.$route.query.q) {
+      this.target = await this.$route.query.q
+      localStorage.target = this.target
+      window.eventBus.$emit("selectTarget", this.$route.query.q)
+    } else {
+      if (localStorage.target) {
+        this.target = await localStorage.target
+        this.loadData()
+      } 
+    }
     if (localStorage.groups) {
       this.groups = await JSON.parse(localStorage.groups)
     } else {
       this.groups = await getArray()
       localStorage.groups = await JSON.stringify(this.groups)
-    }
-    if (localStorage.target) {
-      this.target = localStorage.target
-      this.loadData()
     }
   },
   methods: {
